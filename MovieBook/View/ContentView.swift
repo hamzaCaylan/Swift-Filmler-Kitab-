@@ -10,10 +10,16 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Button(action: {
+                DownloaderClient().filimlerIndir(search: "tita") { (sonuc) in
+                    switch sonuc {
+                    case .success(let filmDizisi) :
+                        print(filmDizisi as Any)
+                    case .failure(let hata):print(hata)
+                    }
+                }
+            },
+                   label: {Text("test yap")})
         }
         .padding()
     }
